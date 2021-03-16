@@ -8,6 +8,7 @@
 <li>Our Database so far</li>
 <li>The anon problem</li>
 <li>HTTP Requests and Retrieving Data from the Database</li>
+<li>Sending Data to the Database</li>
 </ol>
 
 ## 1. Client-side and Server-side
@@ -26,7 +27,7 @@ There are two components to websites that we should be concerned with in this pr
 <li>Databases (MySQL)</li>
 </ul>
 
-You can think of the client and the server as two different containers for code. Any process can easily communicate with a process in its container, but cannot (easily) communicate with processes from another container. If you have worked with HTML and JavaScript, you know that communicating from an HTML file to a JavaScript file is as easy as typing one line of code. It's similarly easy for PHP code to communicate with a database. However communicating from an HTML file to a PHP file requires us to build a bridge between the client and the server. This bridge is an HTTP request, which I talk about more in [SECTION].
+You can think of the client and the server as two different containers for code. Any process can easily communicate with a process in its container, but cannot (easily) communicate with processes from another container. If you have worked with HTML and JavaScript, you know that communicating from an HTML file to a JavaScript file is as easy as typing one line of code. It's similarly easy for PHP code to communicate with a database. However communicating from an HTML file to a PHP file requires us to build a bridge between the client and the server. This bridge is an HTTP request, which I talk about more in Section 5.
 
 ## 2. Create an internal server on your PC
 
@@ -218,3 +219,59 @@ Here is a more complete program which does essentially the same thing. This time
     </html>
 
 This time if we can't connect to the server or the database, the program will print 'Unable to connect' and then program will stop. Additionally, if there are multiple query results it will print all of them sequentially.
+
+## 6. Sending data to the database
+
+Here is the code for sending data to the database. When the 'Send' button is pushed, a row will be sent to the database with the poster_id, text, and the time which the query was made.
+
+    <form method = 'post'>
+
+    <label for = user_id>Username</label>
+    <input type = 'text' name = 'user_id'>
+    <br>
+    <label for = text>Text</label>
+    <input type = 'text' name = 'text'>
+    <br>
+    <input type="submit" name="send" value="Send" />
+
+    </form>
+
+        <?php
+
+        if(isset($_POST['send'])) {
+               send();
+           }
+
+
+
+        function send(){
+
+      try{
+          if (!($con = mysqli_connect('localhost', 'root', '', 'website'))){
+              throw new Exception('Unable to connect');
+          }
+      }
+      catch(Exception $e)
+      {
+          echo $e->getMessage();
+          die();
+      }
+
+        $user_id = $_POST['user_id'];
+        $text = $_POST['text'];
+
+        $send_query = "INSERT INTO post(poster_id, text, time) VALUES ('$user_id', '$text', now());";
+
+        $result = mysqli_query($con, $send_query);
+        echo $result;
+    }
+
+
+    ?>
+
+This time when the send button is pressed, a post request will be made with the contents inside the form. We access the contents of the request with:
+
+    $user_id = $_POST['user_id'];
+    $text = $_POST['text'];
+
+The process of querying the database is the same as in previous examples.
