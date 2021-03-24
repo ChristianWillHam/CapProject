@@ -8,7 +8,7 @@ module.exports = function(app, database){
 
     var defaultNumberOfPostsToReturn = 10
     
-    // THIS WILL BE THE 
+    // THIS WILL BE THE SSTRUCTURE FOR ALL REQUESTS
     app.get('/api/v1/getPosts', function (req, res) {
         // REQ passes params 
         // TODO:
