@@ -66,7 +66,6 @@
 
     if(isset($_POST['send'])) {
            send();
-           echo "worked";
        }
 
 
