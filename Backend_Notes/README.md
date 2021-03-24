@@ -67,7 +67,7 @@ You are now in the database, which is currently empty. In class we created the d
 
     create table user(
         user_id varchar(25) NOT NULL,
-        password varchar(25) NOT NULL,
+        password varchar(128) NOT NULL,
         PRIMARY KEY (user_id)
         );
 
@@ -76,7 +76,7 @@ You are now in the database, which is currently empty. In class we created the d
         poster_id varchar(25),
         text varchar(250) NOT NULL,
         time datetime NOT NULL,
-        FOREIGN KEY(poster_id) REFERENCES user(user_id)
+        FOREIGN KEY(poster_id) REFERENCES user(user_id),
         PRIMARY KEY(post_id)
         );
 
