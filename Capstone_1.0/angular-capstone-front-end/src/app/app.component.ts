@@ -1,10 +1,20 @@
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-capstone-front-end';
+  public title = 'My Global Page';
+  public isAuthenticated: boolean;
+
+  constructor() {
+    this.isAuthenticated = false;
+  }
+
+  login() {
+  }
+
+  logout() {
+  }
 }

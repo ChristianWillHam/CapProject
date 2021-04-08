@@ -1,0 +1,24 @@
+import { Component } from:  '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  public title = 'uMessage';
+  public isAuthenticated: boolean;
+
+  constructor() {
+    this.isAuthenticated = false;
+  }
+
+  login() {
+  }
+
+  logout() {
+  }
+}
+
+//npm i @angular/material@7.0.2 @angular/cdk@7.0.2 @angular/animations@7.0.1 @angular/flex-layout@7.0.0-beta.1
+// need these 
