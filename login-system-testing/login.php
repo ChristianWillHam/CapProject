@@ -46,12 +46,11 @@
     					<div class= "text box">
                 <h2>Sign In</h2>
                 <form action = "includes/login.inc.php" method = "post" >
-                  <input type="text" name="User ID" placeholder = "Username">
+                  <input type="text" name="user_id" placeholder = "Username">
                   <br>
-                  <input type="password" name="Password" placeholder = "Password">
+                  <input type="password" name="password" placeholder = "Password">
                   <br>
                   <input type="submit" name="login" value="Submit" />
-
                 </form>
 
 

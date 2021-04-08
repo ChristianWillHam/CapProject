@@ -29,8 +29,21 @@
 
     					<div class= "menu_option">
                 <a href="index.php">Home</a>
-                <a href="login.php">Login</a>
-                <a href="signup.php">Create Account</a>
+                <?php
+                  echo isset($_SESSION["user_id"]);
+
+                  if(isset($_SESSION["user_id"])){
+                    echo "<a href=\"signup.php\">Logout</a>";
+                    echo "Logged in as ";
+                    echo $_SESSION["user_id"];
+                  } else {
+                      echo "<a href=\"login.php\">Login</a>";
+                      echo "<a href=\"signup.php\">Create Account</a>";
+                  }
+                ?>
+
+
+
 
 
     					</div><!--header -->
