@@ -9,6 +9,8 @@
 <li>The anon problem</li>
 <li>HTTP Requests and Retrieving Data from the Database</li>
 <li>Sending Data to the Database</li>
+<li>Post System Design</li>
+<li>Feed System Design</li>
 </ol>
 
 ## 1. Client-side and Server-side
@@ -275,3 +277,48 @@ This time when the send button is pressed, a post request will be made with the 
     $text = $_POST['text'];
 
 The process of querying the database is the same as in previous examples.
+
+## 7. Post System Design
+Here are the things that the post system needs to be able to do:
+  <ol>
+    <li><b>Identify if a user is logged in.</b> This should be fairly trivial. The current login system identifies the user who is logged in using php sessions. Essentially when you type the function <b>session_start();</b> an array of global variables called <b>$_SESSION</b> is initialized. This array works similar to dictionaries in python, with key value pairs.
+
+  In our login system, whenever a user logs in, <b>session_start();</b> is called and the users name is stored in <b>$_SESSION['user_id']</b>. When the user logs out the session is terminated.
+
+  To know when a user is logged in we have to check if a session is active.
+
+    isset($_SESSION["user_id"];
+
+  This function returns true if the session is active, and false if it isn't. If the user is logged in, then we want to associate any posts submitted by the user to the account logged in. If they aren't, we want to associate any posts submitted by the user to "Anonymous".</li>
+
+  <li>
+  The post system needs to send any post that is submitted to the database. If the user is logged in, then the post should be associated with the user_id logged in. If not, the post should be sent to the database with no user_id attribute. I talked about how to send data to the database in Section 6.
+  </ol>
+
+  ## 8. Feed System Design
+  Technically, my code in section 5 is a simple example of a feed. It for loops through and prints all of the data in the database to the screen. Currently that code simply prints unformatted strings, but we want our posts to be formatted as html divs. The change to make here shouldn't be too hard.
+
+    echo "<div class = \"row\">"
+      echo "<div class = \"postdiv\">"
+
+      if($user_id !== null){
+        echo $user_id
+      } else {
+        echo "Anonymous";
+      }
+
+      echo $messageText;
+      echo $dateTime;
+
+      echo "</div>"
+    echo "</div>"
+
+  Essentially we will be looping through the database, getting the variables for each post and then sending them to the frontend in this format.
+
+  This is a general outline of the format for a post div. The first line is a bit of bootstrap that indicates that this div should be located below the previous div. The second line says use the "postdiv" CSS formatting that Miguel will be making.
+
+  The "echo" keyword basically means "execute this line of code as html". Echo should always be followed by a string, which is why there are backslashes within the string to indicate that those quotes are string literals. To add to the confusion, you can you can say "echo $phpVariable" which would convert $phpVariable to a string and output it as html. So it's not necessarily the case that echo will always be followed by html code. This can all get super confusing, as you are literally writing with two or more languages at one time in the same program, it can be hard to keep which one you are writing in. Almost all of my errors for the login system were a result of me forgetting what language I was supposed to be writing in so look out for that lol.
+
+  Another challenge will be ordering the posts, and displaying the proper quantity of posts that we want. I am not sure if we will be reordering the posts in the database itself, or if the backend will handle it, but that is something to figure out.
+
+  We also have to figure out the general file structure for the backend when we meet. 
