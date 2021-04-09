@@ -17,14 +17,17 @@ if(isset($_POST["login"])){
   //check if one any of the fields is blank
   if(emptyInputLogin($user_id, $password)){
     header("location: ../login.php?error=emptyinputlogin");
-    exit();
+
   }
 
   //login the user if there are no errors
   loginUser($connect, $user_id, $password);
+  header("location: ../index.php");
+  
 }
 
 else{
-  header("location: index.php");
-  exit();
+  header("location: ../index.php");
 }
+
+header("location: ../index.php");

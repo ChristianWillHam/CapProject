@@ -18,7 +18,7 @@
 
 <?php
 ////////If the user isn't logged in
-  if(!isset($_SESSION["user_id"])){
+  if(isset($_SESSION["user_id"]) === false){
     echo "<div class = \"col-lg-4\">";
       echo "<div class = \"menu-item\">";
         echo "<a href = \"login.php\">Login</a>";
@@ -35,9 +35,17 @@
 ///////If they are logged in
   } else {
 
-    echo "<div class = \"col-lg-8\">";
+    echo "<div class = \"col-lg-4\">";
       echo "<div class = \"menu-item\">";
-        echo "Logout";
+        echo "Welcome ";
+        echo $_SESSION["user_id"];
+        echo "!";
+      echo "</div>";
+    echo "</div><!-- column -->";
+
+    echo "<div class = \"col-lg-4\">";
+      echo "<div class = \"menu-item\">";
+        echo "<a href = \"includes/logout.inc.php\">Logout</a>";
       echo "</div>";
     echo "</div><!-- column -->";
 

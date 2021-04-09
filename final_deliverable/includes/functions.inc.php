@@ -110,7 +110,7 @@ function createUser($connect, $user_id, $pwd){
     }
     mysqli_stmt_close($stmt);
     // Return the user to somewhere
-    header("location: ../signup.php?error=none");
+    loginUser($connect, $user_id, $pwd);
     exit();
 }
 
@@ -141,12 +141,14 @@ function loginUser($connect, $user_id, $pwd){
     $pwdHashed = $uidExists["password"];
     $checkPwd = password_verify($pwd, $pwdHashed);
 
+
     if($checkPwd === false){
       header("location: ../login.php?error=loginFailedPass");
     } else if ($checkPwd === true){
         session_start();
         $_SESSION["user_id"] = $uidExists["user_id"];
         header("location: ../index.php");
+        exit();
     }
   }
 }
