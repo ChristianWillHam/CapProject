@@ -2,9 +2,9 @@
 <div class = "row">
   <div class = "formpanel"></div>
 
-    <form method = "POST">
+    <form action = "includes/postform.php" method = "POST">
 
-      <textarea style= "resize: none;" name="Text1" cols="40" rows="5"></textarea>
+      <textarea style= "resize: none;" name="text" cols="40" rows="5"></textarea>
 
       <br>
 
@@ -18,8 +18,8 @@
 <div class = "row">
   <div class = "postparent">
     <h2>This is the parent div for the posts</h2>
-    <div class = "postdiv">
-      <p>This is an example post div</p>
-    </div>
+    <?php
+      include_once "feed.php";
+     ?>
   </div>
 </div>
