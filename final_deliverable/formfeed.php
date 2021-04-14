@@ -2,7 +2,7 @@
 <div class = "row">
   <div class = "formpanel"></div>
 
-    <form action = "includes/postform.php" method = "POST">
+    <form action = "includes/postform.inc.php" method = "POST">
 
       <textarea style= "resize: none;" name="text" cols="40" rows="5"></textarea>
 
