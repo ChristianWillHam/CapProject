@@ -1,57 +1,16 @@
-<div class = "row">
-  <div class = "header">
-
-    <h1>Chat</h1>
-
+<div class = "row nav-container">
+  <div class = "header navbar container">
+    <a href="index.php" class="navbar-brand">µMsg</a>
+    <?php
+    session_start();
+      //Show register and login links if not logged in
+      if(!isset($_SESSION["user_id"])){
+        echo "<a href = \"login.php\">LOGIN</a>";
+        echo "<a href = \"signup.php\">SIGN UP</a>";
+      } else {
+        echo "Logged in as " . $_SESSION["user_id"];
+        echo "<a href=\"includes/logout.inc.php\">LOGOUT</a>";
+      }
+      ?>
   </div> <!-- header -->
 </div> <!-- row -->
-
-
-<!--//////////////////////////// MENU //////////////////////////-->
-<div class = "row">
-
-  <div class = "col-lg-4">
-    <div class = "menu-item">
-      <a href = "index.php">Home</a>
-    </div>
-  </div><!-- column -->
-
-<?php
-////////If the user isn't logged in
-  if(isset($_SESSION["user_id"]) === false){
-    echo "<div class = \"col-lg-4\">";
-      echo "<div class = \"menu-item\">";
-        echo "<a href = \"login.php\">Login</a>";
-      echo "</div>";
-    echo "</div><!-- column -->";
-
-
-    echo "<div class = \"col-lg-4\">";
-      echo "<div class = \"menu-item\">";
-        echo "<a href = \"signup.php\">Sign Up</a>";
-      echo "</div>";
-    echo "</div><!-- column -->";
-
-///////If they are logged in
-  } else {
-
-    echo "<div class = \"col-lg-4\">";
-      echo "<div class = \"menu-item\">";
-        echo "Welcome ";
-        echo $_SESSION["user_id"];
-        echo "!";
-      echo "</div>";
-    echo "</div><!-- column -->";
-
-    echo "<div class = \"col-lg-4\">";
-      echo "<div class = \"menu-item\">";
-        echo "<a href = \"includes/logout.inc.php\">Logout</a>";
-      echo "</div>";
-    echo "</div><!-- column -->";
-
-
-  }
-?>
-
-
-</div><!-- row -->

@@ -8,10 +8,22 @@
 
 
   <body>
+
+    <div class = "container">
       <?php
         include_once "header.php";
-        include_once "formfeed.php";
       ?>
+
+      <div class = "row">
+        <h2>Login</h2>
+          <form action = "includes/login.inc.php" method = "post" >
+            <input type="text" name="user_id" placeholder = "Username">
+            <br>
+            <input type="password" name="password" placeholder = "Password">
+            <br>
+            <input type="submit" name="login" value="Submit" />
+        </form>
+      </div>
     </div> <!-- container -->
 
 

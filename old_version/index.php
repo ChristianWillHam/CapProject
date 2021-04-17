@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -8,6 +12,8 @@
 
 
   <body>
+
+    <div class = "container">
       <?php
         include_once "header.php";
         include_once "formfeed.php";

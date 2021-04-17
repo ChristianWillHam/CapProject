@@ -1,6 +1,66 @@
 /* change max-width to make page wider/narrower */
 @media (min-width: 1200px) {
     .container{
-        max-width: 700px;
+        max-width: 700px
     }
+}
+.navbar-brand {
+    font-size: 32px;
+    color:white
+}
+.navbar-brand:hover, .navbar a:hover{
+    color:#81a9ff
+}
+.nav-container {
+    background: #0051ff;
+    color: white;
+    width: 100%
+}
+
+.navbar a{
+    color:white;
+}
+
+.postparent{
+    border: 2px solid lightgray;
+    padding: 5px;
+    min-width: 50%;
+    max-width: 50%;
+    margin: 1.5rem auto;
+}
+
+.formpanel{
+    margin: 0.5rem auto;
+    border: 2px solid gray;
+}
+
+.post-username, .post-userid{
+    margin:0;
+}
+
+.post-userid{
+    color:gray;
+}
+
+hr{
+    margin: 0.5rem 0;
+}
+
+p{
+    margin:0.5rem 0
+}
+
+textarea{
+    border:none
+}
+
+#submitPost{
+    width:100%;
+    border: none;
+    background: lightgray;
+    padding: 3px 0;
+}
+
+#submitPost:hover{
+    background: white;
 }

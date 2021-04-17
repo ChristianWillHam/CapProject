@@ -1,25 +1,21 @@
 <!--/////////////// Post Form //////////// -->
-<div class = "row">
-  <div class = "formpanel"></div>
+<div class="container">
+  <div class = "row">
+    <div class = "formpanel">
 
-    <form action = "includes/postform.inc.php" method = "POST">
+      <form method = "POST" class="formparent" action = "includes/postform.inc.php">
+        <textarea style= "resize: none;" name="text" cols="40" rows="5" placeholder="Type your message here..."></textarea>
 
-      <textarea style= "resize: none;" name="text" cols="40" rows="5"></textarea>
+        <br>
+        <input type="submit" name="sumbitPost" id="submitPost"></input>
 
-      <br>
-
-      <input type="submit" name="sumbitPost"></input>
-
-    </form>
-</div><!-- row -->
+      </form>
+      </div>
+  </div><!-- row -->
 
 
-<!--/////////////// Post Feed //////////// -->
-<div class = "row">
-  <div class = "postparent">
-    <h2>This is the parent div for the posts</h2>
-    <?php
-      include_once "feed.php";
-     ?>
-  </div>
+  <!--/////////////// Post Feed //////////// -->
+  <?php
+    include_once "feed.php";
+?>
 </div>
