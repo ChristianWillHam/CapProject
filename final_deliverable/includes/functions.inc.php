@@ -29,19 +29,7 @@ function invalidUID($username){
     return $result;
 }
 
-// Function to check if an email is valid
-function invalidEmail($email) {
 
-    $result;
-
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $result = true;
-    } else {
-        $result = false;
-    }
-
-    return $result;
-}
 
 // Function to test if a pssword is correct
 function pwdMatch($pwd, $pwdRepeat) {
@@ -75,8 +63,6 @@ function uidExists($connect, $username){
 
     $resultData = mysqli_stmt_get_result($stmt);
     if($row = (mysqli_fetch_assoc($resultData))){
-        // Section is empty because later in the program I
-        // will need to fetch and compare from username
         return $row;
     } else {
         $result = false;
@@ -114,12 +100,7 @@ function createUser($connect, $user_id, $pwd){
     exit();
 }
 
-/*
-----------------------------------> COMMENT BY CHRISTIAN:
-----------------------------------> Do we want this at this point in the project?
-----------------------------------> Just shoot me a text and ill finish. I can write more php whenever,
-----------------------------------> I have a pretty decent grasp now.
-*/
+
 function emptyInputLogin($username, $password){
   $result;
 

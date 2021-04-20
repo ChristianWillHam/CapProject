@@ -20,7 +20,7 @@ if(isset($_POST["createAcct"])){
     exit();
   }
 
-//check if the username is greater than 25 characters
+//check if the username has invalid character
   if(invalidUID($user_id) !== false){
     header("location: ../signup.php?error=invalidUID");
     exit();

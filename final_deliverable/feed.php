@@ -7,24 +7,24 @@ function loadPosts($loadCount){
 
   while( $row = mysqli_fetch_array($sql)){
 
-  $user_id = $row ['poster_id'];
+    $user_id = $row ['poster_id'];
 
-  if($user_id === NULL){
-    $user_id = "Anonymous";
-  }
-  $text = $row ['text'];
-  $time = $row ['time'];
+    if($user_id === NULL){
+      $user_id = "Anonymous";
+    }
+    $text = $row ['text'];
+    $time = $row ['time'];
 
-  echo "<div class = \"row\">";
-    echo "<div class = \"postparent\">";
-      echo "<h3 class=\"post-username\">$user_id</h3>";
-        echo "<h6 class=\"post-userid\">$time</h6>";
-        echo "<hr>";
-        echo "<div class = \"postdiv\">";
-          echo "<p class=\"posttext\">$text</p>";
-        echo "</div>";
+    echo "<div class = \"row\">";
+      echo "<div class = \"postparent\">";
+        echo "<h3 class=\"post-username\">$user_id</h3>";
+          echo "<h6 class=\"post-userid\">$time</h6>";
+          echo "<hr>";
+          echo "<div class = \"postdiv\">";
+            echo "<p class=\"posttext\">$text</p>";
+          echo "</div>";
+      echo "</div>";
     echo "</div>";
-  echo "</div>";
   }
 }
 
