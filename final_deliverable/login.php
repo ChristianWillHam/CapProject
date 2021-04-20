@@ -14,8 +14,9 @@
         include_once "header.php";
       ?>
 
-      <div class = "row">
+
         <h2>Login</h2>
+
           <form action = "includes/login.inc.php" method = "post" >
             <input type="text" name="user_id" placeholder = "Username">
             <br>
@@ -23,7 +24,26 @@
             <br>
             <input type="submit" name="login" value="Submit" />
         </form>
-      </div>
+
+      <?php
+        if(isset($_GET['error'])){
+          if($_GET['error'] === "emptyinputlogin"){
+            echo "Please fill out all fields!";
+            echo "<br>";
+          }
+
+          if($_GET['error'] === "loginFailedUID"){
+            echo "That User ID does not exist!";
+            echo "<br>";
+          }
+
+          if($_GET['error'] === "loginFailedPass"){
+            echo "Password incorrect!";
+            echo "<br>";
+          }
+        }
+      ?>
+
     </div> <!-- container -->
 
 

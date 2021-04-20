@@ -18,16 +18,15 @@ if(isset($_POST["login"])){
   if(emptyInputLogin($user_id, $password)){
     header("location: ../login.php?error=emptyinputlogin");
 
+  } else {
+
+    //login the user if there are no errors
+    loginUser($connect, $user_id, $password);
+
   }
 
-  //login the user if there are no errors
-  loginUser($connect, $user_id, $password);
-  header("location: ../index.php");
-  
 }
 
 else{
   header("location: ../index.php");
 }
-
-header("location: ../index.php");

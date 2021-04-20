@@ -109,6 +109,8 @@ function emptyInputLogin($username, $password){
   } else {
     $result = false;
   }
+
+  return $result;
 }
 
 function loginUser($connect, $user_id, $pwd){

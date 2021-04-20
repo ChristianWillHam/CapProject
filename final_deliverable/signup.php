@@ -25,6 +25,32 @@
 
         </form>
 
+        <?php
+          if(isset($_GET['error'])){
+
+            if($_GET['error'] === "emptyinput"){
+              echo "Please fill out all fields!";
+              echo "<br>";
+            }
+
+            if($_GET['error'] === "invalidUID"){
+              echo "That username is invalid!";
+              echo "<br>";
+            }
+
+            if($_GET['error'] === "pwdmismatch"){
+              echo "Passwords do not match!";
+              echo "<br>";
+            }
+
+            if($_GET['error'] === "uidexists"){
+              echo "That username already exists!";
+              echo "<br>";
+            }
+
+          }
+        ?>
+
     </div> <!-- container -->
 
 
