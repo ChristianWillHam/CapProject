@@ -13,17 +13,20 @@
       <?php
         include_once "header.php";
       ?>
-
-
-        <h2>Login</h2>
-
-          <form action = "includes/login.inc.php" method = "post" >
-            <input type="text" name="user_id" placeholder = "Username">
-            <br>
-            <input type="password" name="password" placeholder = "Password">
-            <br>
-            <input type="submit" name="login" value="Submit" />
-        </form>
+    <div class= "row">
+      <h2 class="login-header">Login to µMsg</h2>
+    </div>
+      <form action = "includes/login.inc.php" method = "post">
+      <div class="row">
+        <input type="text" name="user_id" placeholder = "Username" class="login-field">
+      </div>
+      <div class="row">
+        <input type="password" name="password" placeholder = "Password" class="login-field">
+     </div>
+        <div class="row">
+          <input type="submit" name="login" value="Submit" class="login-field"/>
+     </div>
+    </form>
 
       <?php
         if(isset($_GET['error'])){

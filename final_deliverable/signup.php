@@ -13,16 +13,23 @@
       <?php
         include_once "header.php";
         ?>
-        <h2>Sign Up</h2>
-        <form action = "includes/signup.inc.php" method = "post">
-          <input type="text" name="user_id" placeholder = "Username">
-          <br>
-          <input type="password" name="password" placeholder = "Password">
-          <br>
-          <input type="password" name="passwordCfrm" placeholder = "Retype Password">
-          <br>
-          <input type="submit" name="createAcct" value="Submit" />
+        <div class = "row">
+          <h2 class = "login-header">Sign Up</h2>
+        </div>
 
+        <form action = "includes/signup.inc.php" method = "post">
+        <div class = "row">
+          <input type="text" name="user_id" placeholder = "Username" class="login-field">
+        </div>
+        <div class="row">
+          <input type="password" name="password" placeholder = "Password" class="login-field">
+        </div>
+        <div class="row">
+          <input type="password" name="passwordCfrm" placeholder = "Retype Password" class="login-field">
+        </div>
+        <div class="row">
+          <input type="submit" name="createAcct" value="Submit" class="login-field"/>
+        </div>
         </form>
 
         <?php

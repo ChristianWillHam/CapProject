@@ -25,7 +25,6 @@
     border: 2px solid lightgray;
     padding: 5px;
     min-width: 50%;
-    max-width: 50%;
     margin: 1.5rem auto;
 }
 
@@ -42,12 +41,12 @@
     color:gray;
 }
 
-hr{
-    margin: 0.5rem 0;
+hr,p{
+    margin: 0.5rem 0
 }
 
-p{
-    margin:0.5rem 0
+.login-field{
+    margin: 0.5rem auto
 }
 
 textarea{
@@ -56,11 +55,18 @@ textarea{
 
 #submitPost{
     width:100%;
-    border: none;
-    background: lightgray;
-    padding: 3px 0;
 }
 
-#submitPost:hover{
-    background: white;
+input[type="submit"]{
+    border: none;
+    background: lightgray;
+    padding: 3px;
+}
+
+input[type="submit"]:hover{
+    background: #f0f0f0;
+}
+
+.login-header{
+    margin: 1rem auto;
 }
