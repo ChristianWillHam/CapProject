@@ -7,6 +7,7 @@
       if(!isset($_SESSION["user_id"])){
         echo "<a href = \"login.php\">LOGIN</a>";
         echo "<a href = \"signup.php\">SIGN UP</a>";
+        //else show the user who is logged in and the logout button
       } else {
         echo "Logged in as " . $_SESSION["user_id"];
         echo "<a href=\"includes/logout.inc.php\">LOGOUT</a>";

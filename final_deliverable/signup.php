@@ -33,6 +33,9 @@
         </form>
 
         <?php
+
+        //This code checks for get methods indicating an error, and echos the
+        //appropriate error message
           if(isset($_GET['error'])){
 
             if($_GET['error'] === "emptyinput"){

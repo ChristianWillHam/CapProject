@@ -1,9 +1,8 @@
 <?php
 
-// Function in order to handle mis-filed login forms
+// Returns true if any of these fields are blank
 function emptyInputSignup($username, $pwd, $pwdRepeat){
 
-    //Declairing $result; to minimize work
     $result;
 
     if(empty($username) || empty($pwd) || empty($pwdRepeat)) {
@@ -61,6 +60,8 @@ function uidExists($connect, $username){
     mysqli_stmt_bind_param($stmt, "s", $username);
     mysqli_stmt_execute($stmt);
 
+
+//If the user was found, return the row from the database. If they weren't return false
     $resultData = mysqli_stmt_get_result($stmt);
     if($row = (mysqli_fetch_assoc($resultData))){
         return $row;
@@ -82,11 +83,7 @@ function createUser($connect, $user_id, $pwd){
         header("location: ../signup.php?error=stmtfailed");
         exit();
     }
-
-    // Super weak security at this point makes all accounts on the
-    // platform extremely vulnerable to attack
-    // probably will hash here default php hash is updated regularly
-
+    // Hash the password, so we are not saving raw passwords in the database
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
     mysqli_stmt_bind_param($stmt, "ss", $user_id, $hashedPwd);
@@ -100,7 +97,7 @@ function createUser($connect, $user_id, $pwd){
     exit();
 }
 
-
+//same as the above emptyinput, but for the login form
 function emptyInputLogin($username, $password){
   $result;
 
@@ -113,21 +110,24 @@ function emptyInputLogin($username, $password){
   return $result;
 }
 
+//Logs in the user, or returns an error if the login failed
 function loginUser($connect, $user_id, $pwd){
   $uidExists = uidExists($connect, $user_id);
 
+//uidExists returns the row in the database if the user is found
   if($uidExists === false){
     header("location: ../login.php?error=loginFailedUID");
   } else{
 
-
+//Unhash the password
     $pwdHashed = $uidExists["password"];
     $checkPwd = password_verify($pwd, $pwdHashed);
 
-
+//Check if the password is correct.
     if($checkPwd === false){
       header("location: ../login.php?error=loginFailedPass");
     } else if ($checkPwd === true){
+      //The name of the logged in user is contained in the SESSION variable below
         session_start();
         $_SESSION["user_id"] = $uidExists["user_id"];
         header("location: ../index.php");
